@@ -1,26 +1,16 @@
-<div class="row">
-  <button type="submit" class="btn btn-primary col-12" (click)="searchAllEmployees()">
-    Enlistar todos los empleados
-  </button>
-  &nbsp;
-  <button type="submit" class="btn btn-danger col-12" (click)="clean()">
-    Limpiar lista
-  </button>
-
-</div>
-
-<div class="row">
-  <div class="col">
+<div class="col py-4 px-4">
+  <div class="col py-4 px-4">
     <table class="table table-hover">
       <thead class="thead-dark">
         <tr>
           <th>Id</th>
-          <th>Fullname</th>
-          <th>Employee function</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Procesado</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let u of users">
+        <tr *ngFor="let u of users" (click)="saveUsersToProccess(u)">
           <td>{{u.id}}</td>
           <td>{{u.firstName}}</td>
           <td>{{u.lastName}}</td>
@@ -28,5 +18,24 @@
         </tr>
       </tbody>
     </table>
+    <div class="row py-4 px-4">
+      <button type="submit" class="btn btn-primary" (click)="searchAllUsers()">
+        Enlistar todos los empleados
+      </button>
+
+      &nbsp;
+
+      <button type="submit" [disabled]="users.length ==0" class="btn btn-primary" (click)="updateProceso()">
+        Procesar
+      </button>
+      &nbsp;
+     
+      <button type="submit" class="btn btn-danger" (click)="clean()">
+        Limpiar lista
+      </button>   
+    
+    </div>
   </div>
+  
 </div>
+

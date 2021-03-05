@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
+import { UserService } from '../services/user.service';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 @Component({
   selector: 'app-registros',
@@ -10,9 +12,37 @@ export class RegistrosComponent implements OnInit {
 
   public users: User[] = [];
 
-  constructor() { }
+  public processUsers: string[] = [];
+
+  constructor(private UserService: UserService) { }
 
   ngOnInit(): void {
+    this.searchAllUsers();
+  }
+
+  searchAllUsers(){
+    this.UserService.getAllUsers()
+        .subscribe(u=>{
+          this.users = u;
+        });
+  }
+
+  clean(){
+    this.users = [];
+  }
+
+  saveUsersToProccess(u){
+    this.processUsers.push(u.id);
+    console.log(this.processUsers);
+  }
+
+  updateProceso() {
+    this.UserService.updateProccess(this.processUsers)
+        .subscribe(p=>{
+          console.log(p);
+        });
+
+    this.searchAllUsers();
   }
 
 }
