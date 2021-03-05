@@ -1,0 +1,77 @@
+<h4>Formulario <small>Usuario</small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="saveUser()">
+
+  <div class="container">
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="firstName"
+               [class.is-invalid]="firstNameNoValid"
+               [(ngModel)]="user.firstName">
+        <small class="text-danger" *ngIf="firstNameNoValid">Ingrese al menos 3 letras</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apelido"
+               formControlName="lastName"
+               [class.is-invalid]="lastNameNoValid"
+               [(ngModel)]="user.lastName">
+        <small class="text-danger" *ngIf="lastNameNoValid">Ingrese al menos 3 letras</small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">&nbsp;</label>
+      <div class="input-group col-md-8">
+        <button type="submit" class="btn btn-primary">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<!-- <div class="row">
+  <button type="submit" class="btn btn-primary col-12" (click)="searchAllEmployees()">
+    Enlistar todos los empleados
+  </button>
+  &nbsp;
+  <button type="submit" class="btn btn-danger col-12" (click)="clean()">
+    Limpiar lista
+  </button>
+
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Fullname</th>
+          <th>Employee function</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of employees">
+          <td>{{e.id}}</td>
+          <td>{{e.fullname}}</td>
+          <td>{{e.function}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
