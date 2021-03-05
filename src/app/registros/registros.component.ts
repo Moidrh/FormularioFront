@@ -33,14 +33,11 @@ export class RegistrosComponent implements OnInit {
 
   saveUsersToProccess(u){
     this.processUsers.push(u.id);
-    console.log(this.processUsers);
   }
 
   updateProceso() {
     this.UserService.updateProccess(this.processUsers)
-        .subscribe(p=>{
-          console.log(p);
-        });
+        .subscribe();
 
     this.searchAllUsers();
   }
