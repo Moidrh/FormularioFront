@@ -39,7 +39,7 @@ export class UserService {
       ids
     };
 
-    return this.http.post<any[]>(url, { }, {params: values}).pipe(
+    return this.http.post<number>(url, { }, {params: values}).pipe(
       map(resp=>{return resp})
     );
   }

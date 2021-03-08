@@ -7,6 +7,7 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Procesado</th>
+          <th>Seleccionado</th>
         </tr>
       </thead>
       <tbody>
@@ -15,6 +16,7 @@
           <td>{{u.firstName}}</td>
           <td>{{u.lastName}}</td>
           <td>{{u.procesado}}</td>
+          <td *ngIf="expression"></td>
         </tr>
       </tbody>
     </table>
